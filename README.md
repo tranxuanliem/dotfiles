@@ -1,4 +1,4 @@
-# Dotfiles
+cl# Dotfiles
 
 Opinionated macOS dotfiles for web developers. Includes configurations for terminal, editors, and development tools with a consistent **One Dark Pro** theme.
 
@@ -31,6 +31,7 @@ cd ~/dotfiles && chmod +x setup.sh install.sh && ./setup.sh
 | **Starship** | Beautiful two-line prompt with git status |
 | **Ghostty** | GPU-accelerated terminal |
 | **Warp** | AI-powered terminal |
+| **Terminal.app** | macOS default terminal (themed) |
 
 ### Editors
 | Tool | Description |
@@ -93,6 +94,7 @@ See `config.example` for all available options.
 ├── starship/           # Prompt config
 ├── cursor/             # Cursor/VS Code settings
 ├── ghostty/            # Ghostty terminal config
+├── terminal/           # macOS Terminal.app theme
 ├── zed/                # Zed editor config
 ├── warp/               # Warp terminal theme
 ├── opencode/           # OpenCode AI assistant config
@@ -181,6 +183,7 @@ All configurations use **JetBrains Mono Nerd Font**. It's automatically installe
 - Cursor / VS Code
 - Ghostty terminal
 - Warp terminal
+- macOS Terminal.app
 - Zed editor
 - OpenCode CLI
 

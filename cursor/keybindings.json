@@ -1,0 +1,168 @@
+[
+    // ═══════════════════════════════════════════════════════════════
+    // EDITOR NAVIGATION (cmd+j/k pattern - vim-inspired)
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+ctrl+k",
+        "command": "moveActiveEditor",
+        "args": { "to": "right" }
+    },
+    {
+        "key": "cmd+ctrl+j",
+        "command": "moveActiveEditor",
+        "args": { "to": "left" }
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // SUGGESTIONS & QUICK OPEN (context-aware j/k)
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "cmd+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // TERMINAL (cmd+enter as primary toggle)
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+`",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "cmd+shift+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "cmd+shift+m",
+        "command": "-workbench.action.problems.focus"
+    },
+    {
+        "key": "cmd+n",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "cmd+d",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "cmd+w",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus && terminalHasBeenCreated"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus && terminalHasBeenCreated"
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // LINE OPERATIONS
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+shift+d",
+        "command": "editor.action.removeDuplicateLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // CODE FOLDING
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+1",
+        "command": "editor.foldLevel1",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "cmd+2",
+        "command": "editor.foldLevel2",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "cmd+3",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // CODE ACTIONS
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "cmd+shift+o",
+        "command": "editor.action.organizeImports",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // REMOVE DEFAULT CONFLICTS
+    // ═══════════════════════════════════════════════════════════════
+    {
+        "key": "shift+alt+down",
+        "command": "-editor.action.copyLinesDownAction"
+    },
+    {
+        "key": "shift+alt+up",
+        "command": "-editor.action.copyLinesUpAction"
+    },
+    {
+        "key": "cmd+k cmd+1",
+        "command": "-editor.foldLevel1"
+    },
+    {
+        "key": "cmd+k cmd+2",
+        "command": "-editor.foldLevel2"
+    },
+    {
+        "key": "cmd+k cmd+3",
+        "command": "-editor.foldLevel3"
+    },
+    {
+        "key": "shift+alt+o",
+        "command": "-editor.action.organizeImports"
+    }
+]

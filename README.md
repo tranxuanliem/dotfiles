@@ -31,13 +31,15 @@ cd ~/dotfiles && ./install.sh
 ├── zsh/            # Shell config, aliases, functions
 ├── git/            # Git config & global gitignore
 ├── ssh/            # SSH config (keys not tracked)
-├── starship/       # Prompt config
-├── cursor/         # VS Code/Cursor settings & extensions
+├── starship/       # Prompt config (two-line with icons)
+├── cursor/         # Cursor settings, keybindings & extensions
+├── ghostty/        # Ghostty terminal config (One Dark Pro theme)
+├── zed/            # Zed editor settings & keymap
+├── warp/           # Warp terminal themes
 ├── macos/          # macOS system defaults
 ├── ddev/           # DDEV global config
 ├── mise/           # Node.js version manager
 ├── raycast/        # Raycast settings (manual export)
-├── warp/           # Warp terminal keybindings
 ├── bin/            # Custom scripts
 ├── install.sh      # Main installer
 └── backup.sh       # Backup script
@@ -57,13 +59,22 @@ cd ~/dotfiles && ./install.sh
 
 ### Applications
 - OrbStack (Docker)
-- Cursor (editor)
-- Warp (terminal)
+- Cursor (AI editor)
+- Ghostty (GPU terminal)
+- Zed (fast editor)
+- Warp (AI terminal)
 - Raycast (launcher)
 - JetBrains Mono Nerd Font
 
 ### DDEV
 - DDEV for local PHP development
+
+## Theme
+
+All apps use **One Dark Pro Night Flat** color scheme:
+- Background: `#16191d`
+- Foreground: `#abb2bf`
+- Font: JetBrainsMono Nerd Font (14px)
 
 ## Customization
 
@@ -75,6 +86,9 @@ Each folder contains its own `install.sh` that can be run independently:
 
 # Only apply macOS settings
 ~/dotfiles/macos/install.sh
+
+# Only update Cursor settings
+~/dotfiles/cursor/install.sh
 ```
 
 ## Useful Aliases
@@ -86,6 +100,20 @@ Each folder contains its own `install.sh` that can be run independently:
 | `dds` | `ddev start` |
 | `c.` | `cursor .` |
 | `backup` | Run backup script |
+
+## Keybindings
+
+### Cursor / Zed
+- `Cmd+J/K` - Navigate tabs / suggestions
+- `Cmd+L` - Toggle AI panel (Zed)
+- `Cmd+D` - Duplicate line
+- `Alt+Up/Down` - Move line
+- `Cmd+1/2/3` - Fold levels
+
+### Terminal (Ghostty)
+- `Ctrl+Shift+T` - New tab
+- `Ctrl+Shift+N` - New window
+- `Ctrl++/-` - Font size
 
 ## Notes
 

@@ -1,49 +1,100 @@
-# Starship prompt config
-# https://starship.rs/config/
+# ~/.config/starship.toml
+command_timeout = 1000
 
+# Beautiful two-line prompt with icons
 format = """
-$directory\
-$git_branch\
-$git_status\
-$nodejs\
-$php\
-$python\
-$cmd_duration\
-$line_break\
-$character"""
+[╭─](238)$directory$git_branch$git_status$nodejs$python$rust$golang$php$java$docker_context$cmd_duration
+[╰─](238)$character"""
+
+# Right prompt for time
+right_format = "$time"
+
+[os]
+disabled = true
 
 [directory]
+style = "fg:81 bold"
 truncation_length = 3
 truncate_to_repo = true
+read_only = " 🔒"
+format = "[$path]($style)[$read_only](red) "
+truncation_symbol = "…/"
 
 [git_branch]
-format = "[$branch]($style) "
-style = "bold purple"
+symbol = ""
+style = "fg:212"
+format = "[$symbol $branch]($style) "
 
 [git_status]
-format = '([$all_status$ahead_behind]($style) )'
-style = "bold red"
+style = "fg:209"
+format = '([$all_status$ahead_behind]($style))'
+conflicted = "= "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "?${count} "
+stashed = "*${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
 
 [nodejs]
-format = "[$symbol($version )]($style)"
-symbol = " "
-style = "green"
-
-[php]
-format = "[$symbol($version )]($style)"
-symbol = " "
-style = "147"
+symbol = ""
+style = "fg:77"
+format = "[$symbol $version]($style) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
 
 [python]
-format = "[$symbol($version )]($style)"
-symbol = " "
-style = "yellow"
+symbol = "🐍"
+style = "fg:220"
+format = "[$symbol $version]($style) "
+
+[rust]
+symbol = "🦀"
+style = "fg:208"
+format = "[$symbol $version]($style) "
+
+[golang]
+symbol = "🐹"
+style = "fg:81"
+format = "[$symbol $version]($style) "
+
+[php]
+symbol = "🐘"
+style = "fg:147"
+format = "[$symbol $version]($style) "
+
+[java]
+symbol = "☕"
+style = "fg:167"
+format = "[$symbol $version]($style) "
+
+[bun]
+symbol = "🍞"
+style = "fg:223"
+format = "[$symbol $version]($style) "
+
+[docker_context]
+symbol = "🐳"
+style = "fg:39"
+format = "[$symbol $context]($style) "
+only_with_files = true
 
 [cmd_duration]
 min_time = 2000
-format = "[$duration]($style) "
-style = "yellow"
+style = "fg:220"
+format = "[⏱ $duration]($style) "
+show_milliseconds = false
+
+[time]
+disabled = false
+style = "fg:244"
+format = "[$time]($style)"
+time_format = "%H:%M"
 
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](purple)"

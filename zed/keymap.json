@@ -1,0 +1,369 @@
+// Zed Keymap - Cursor-like AI shortcuts + Custom bindings
+// Location: ~/.config/zed/keymap.json
+// Documentation: https://zed.dev/docs/key-bindings
+//
+// NOTE: Bindings in this file override defaults. Later entries take precedence.
+// Use "use_key_equivalents": true for international keyboard support.
+[
+  // ═══════════════════════════════════════════════════════════════
+  // AI / AGENT PANEL (Cursor-like shortcuts)
+  // ═══════════════════════════════════════════════════════════════
+  // Override cmd-l from editor::SelectLine to toggle AI panel
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Toggle AI chat panel (like Cursor's Cmd+L)
+      // This overrides the default cmd-? binding
+      "cmd-l": "agent::ToggleFocus",
+      // Keep original binding as alternative
+      "cmd-?": "agent::ToggleFocus",
+      // Toggle right dock (where agent panel lives)
+      "cmd-shift-l": "workspace::ToggleRightDock",
+    },
+  },
+  // Override cmd-l in Editor context to prevent editor::SelectLine conflict
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Override default cmd-l (SelectLine) to toggle AI panel instead
+      "cmd-l": "agent::ToggleFocus",
+      // Inline AI assist (default is ctrl-enter)
+      "ctrl-enter": "assistant::InlineAssist",
+      // Alternative: cmd-k for inline assist (like Cursor)
+      "cmd-k": "assistant::InlineAssist",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AGENT PANEL CONTEXT
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "AgentPanel",
+    "use_key_equivalents": true,
+    "bindings": {
+      // New thread
+      "cmd-n": "agent::NewThread",
+      // History
+      "cmd-shift-h": "agent::OpenHistory",
+      // Add selection to context
+      "cmd->": "agent::AddSelectionToThread",
+      // Escape to go back to editor
+      "escape": "workspace::ActivatePreviousPane",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // EDITOR NAVIGATION (Tab switching)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Pane",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Next/Previous editor tab
+      "cmd-shift-]": "pane::ActivateNextItem",
+      "cmd-shift-[": "pane::ActivatePreviousItem",
+      // Also use cmd-} and cmd-{ (default)
+      "cmd-}": "pane::ActivateNextItem",
+      "cmd-{": "pane::ActivatePreviousItem",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // SUGGESTIONS & COMPLETIONS NAVIGATION
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "use_key_equivalents": true,
+    "bindings": {
+      // j/k navigation in completion menu
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious",
+    },
+  },
+  {
+    "context": "menu",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+  {
+    "context": "Picker",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // TERMINAL
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Toggle terminal (default is ctrl-` and cmd-j)
+      "cmd-`": "workspace::ToggleBottomDock",
+      // Keep cmd-j as terminal toggle (Zed default)
+      "cmd-j": "workspace::ToggleBottomDock",
+      // New terminal
+      "ctrl-shift-`": "workspace::NewTerminal",
+    },
+  },
+  {
+    "context": "Terminal",
+    "use_key_equivalents": true,
+    "bindings": {
+      // New terminal
+      "cmd-n": "workspace::NewTerminal",
+      // Split terminal
+      "cmd-d": "pane::SplitRight",
+      // Close terminal
+      "cmd-w": "pane::CloseActiveItem",
+      // Navigate between panes
+      "cmd-alt-left": "workspace::ActivatePaneLeft",
+      "cmd-alt-right": "workspace::ActivatePaneRight",
+      "cmd-alt-up": "workspace::ActivatePaneUp",
+      "cmd-alt-down": "workspace::ActivatePaneDown",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // LINE OPERATIONS
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor && mode == full",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Duplicate line down (like VS Code's cmd-shift-d or alt-shift-down)
+      "cmd-shift-d": "editor::DuplicateLineDown",
+      "alt-shift-down": "editor::DuplicateLineDown",
+      "alt-shift-up": "editor::DuplicateLineUp",
+      // Move lines up/down
+      "alt-up": "editor::MoveLineUp",
+      "alt-down": "editor::MoveLineDown",
+      // Delete line
+      "cmd-shift-k": "editor::DeleteLine",
+      // Select line (since we took cmd-l, provide alternative)
+      "ctrl-shift-l": "editor::SelectLine",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // CODE FOLDING
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Fold/Unfold at cursor
+      "cmd-alt-[": "editor::Fold",
+      "cmd-alt-]": "editor::UnfoldLines",
+      // Toggle fold
+      "cmd-k cmd-l": "editor::ToggleFold",
+      // Fold all / Unfold all
+      "cmd-k cmd-0": "editor::FoldAll",
+      "cmd-k cmd-j": "editor::UnfoldAll",
+      // Fold levels (Zed uses cmd-k cmd-1 format)
+      "cmd-k cmd-1": "editor::FoldAtLevel_1",
+      "cmd-k cmd-2": "editor::FoldAtLevel_2",
+      "cmd-k cmd-3": "editor::FoldAtLevel_3",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // CODE ACTIONS & REFACTORING
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Organize imports
+      "alt-shift-o": "editor::OrganizeImports",
+      // Quick fix / Code actions
+      "cmd-.": "editor::ToggleCodeActions",
+      // Rename symbol
+      "f2": "editor::Rename",
+      // Format document
+      "cmd-shift-i": "editor::Format",
+      // Go to definition
+      "f12": "editor::GoToDefinition",
+      // Go to type definition
+      "cmd-f12": "editor::GoToTypeDefinition",
+      // Find all references
+      "alt-shift-f12": "editor::FindAllReferences",
+      // Peek definition (split view)
+      "alt-f12": "editor::GoToDefinitionSplit",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // SEARCH & NAVIGATION
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      // File finder
+      "cmd-p": "file_finder::Toggle",
+      // Command palette
+      "cmd-shift-p": "command_palette::Toggle",
+      // Global search
+      "cmd-shift-f": "pane::DeploySearch",
+      // Go to symbol in workspace
+      "cmd-t": "project_symbols::Toggle",
+      // Go to line
+      "ctrl-g": "go_to_line::Toggle",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Go to symbol in file (outline)
+      "cmd-shift-o": "outline::Toggle",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // PANELS & SIDEBARS
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Toggle file explorer (project panel)
+      "cmd-b": "workspace::ToggleLeftDock",
+      "cmd-shift-e": "project_panel::ToggleFocus",
+      // Toggle git panel
+      "ctrl-shift-g": "git_panel::ToggleFocus",
+      // Toggle outline panel
+      "cmd-shift-b": "outline_panel::ToggleFocus",
+      // Toggle problems/diagnostics
+      "cmd-shift-m": "diagnostics::Deploy",
+      // Toggle debug panel
+      "cmd-shift-d": "debug_panel::ToggleFocus",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // MULTI-CURSOR & SELECTION
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Add cursor above/below
+      "cmd-alt-up": "editor::AddSelectionAbove",
+      "cmd-alt-down": "editor::AddSelectionBelow",
+      // Select next occurrence
+      "cmd-d": "editor::SelectNext",
+      // Expand/shrink selection (syntax-aware)
+      "ctrl-shift-right": "editor::SelectLargerSyntaxNode",
+      "ctrl-shift-left": "editor::SelectSmallerSyntaxNode",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // SPLIT PANES
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Pane",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Split editor
+      "cmd-\\": "pane::SplitRight",
+      "cmd-k up": "pane::SplitUp",
+      "cmd-k down": "pane::SplitDown",
+      "cmd-k left": "pane::SplitLeft",
+      "cmd-k right": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Navigate between panes
+      "cmd-k cmd-left": "workspace::ActivatePaneLeft",
+      "cmd-k cmd-right": "workspace::ActivatePaneRight",
+      "cmd-k cmd-up": "workspace::ActivatePaneUp",
+      "cmd-k cmd-down": "workspace::ActivatePaneDown",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // EDITOR TABS
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Pane",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Close tab
+      "cmd-w": ["pane::CloseActiveItem", { "close_pinned": false }],
+      // Reopen closed tab
+      "cmd-shift-t": "pane::ReopenClosedItem",
+      // Close all tabs
+      "cmd-k cmd-w": "pane::CloseAllItems",
+    },
+  },
+  {
+    "context": "Workspace && !Terminal",
+    "use_key_equivalents": true,
+    "bindings": {
+      // New file
+      "cmd-n": "workspace::NewFile",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // COMMENTS
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Toggle line comment
+      "cmd-/": "editor::ToggleComments",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // EDIT PREDICTIONS (Zeta AI completions)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      // Accept edit prediction
+      "tab": "editor::AcceptEditPrediction",
+      "alt-tab": "editor::AcceptEditPrediction",
+      // Accept next word of prediction
+      "ctrl-cmd-right": "editor::AcceptNextWordEditPrediction",
+      // Accept next line
+      "ctrl-cmd-down": "editor::AcceptNextLineEditPrediction",
+    },
+  },
+  {
+    "context": "Editor && !edit_prediction",
+    "bindings": {
+      // Show edit prediction manually
+      "alt-tab": "editor::ShowEditPrediction",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // INLINE ASSISTANT CONTEXT
+  // ═══════════════════════════════════════════════════════════════
+  {
+    "context": "InlineAssistant > Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Cycle through inline assist suggestions
+      "ctrl-[": "agent::CyclePreviousInlineAssist",
+      "ctrl-]": "agent::CycleNextInlineAssist",
+      // Model selector
+      "cmd-alt-/": "agent::ToggleModelSelector",
+    },
+  },
+]

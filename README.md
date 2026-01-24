@@ -1,95 +1,128 @@
 # Dotfiles
 
-Personal dotfiles for macOS development environment.
+Opinionated macOS dotfiles for web developers. Includes configurations for terminal, editors, and development tools with a consistent **One Dark Pro** theme.
+
+## Features
+
+- **Interactive setup wizard** - Configure your name, email, and preferences
+- **Modular installation** - Install only what you need
+- **One Dark Pro theme** - Consistent dark theme across all apps
+- **Developer-focused** - Optimized for web development (JS/TS, PHP, Python)
 
 ## Quick Start
 
-### Fresh Machine Setup
-
 ```bash
-# Clone this repo
-git clone git@github.com:tranxuanliem/dotfiles.git ~/dotfiles
+# 1. Clone this repo
+git clone https://github.com/tranxuanliem/dotfiles.git ~/dotfiles
 
-# Make scripts executable
-chmod +x ~/dotfiles/install.sh ~/dotfiles/backup.sh ~/dotfiles/*/install.sh
+# 2. Run setup wizard (creates your personal config)
+cd ~/dotfiles && chmod +x setup.sh install.sh && ./setup.sh
 
-# Run installer
-cd ~/dotfiles && ./install.sh
+# 3. Install everything
+./install.sh
 ```
 
-### Backup Current Settings
+## What's Included
+
+### Terminal & Shell
+| Tool | Description |
+|------|-------------|
+| **Zsh** | Shell with aliases, functions, and plugins |
+| **Starship** | Beautiful two-line prompt with git status |
+| **Ghostty** | GPU-accelerated terminal |
+| **Warp** | AI-powered terminal |
+
+### Editors
+| Tool | Description |
+|------|-------------|
+| **Cursor** | AI-powered VS Code fork |
+| **Zed** | Fast, collaborative editor |
+
+### Development
+| Tool | Description |
+|------|-------------|
+| **mise** | Runtime version manager (Node.js, Python, etc.) |
+| **DDEV** | Local PHP development (optional) |
+| **OrbStack** | Docker alternative for macOS (optional) |
+| **mkcert** | Local HTTPS certificates |
+
+### Utilities
+| Tool | Description |
+|------|-------------|
+| **fzf** | Fuzzy finder |
+| **zoxide** | Smart cd command |
+| **gh** | GitHub CLI |
+| **Raycast** | Spotlight replacement |
+
+## Configuration
+
+After running `setup.sh`, a `config.local` file is created with your preferences:
 
 ```bash
-~/dotfiles/backup.sh
+# Example config.local
+GIT_USER_NAME="Your Name"
+GIT_USER_EMAIL="your@email.com"
+DEFAULT_EDITOR="cursor"
+NODE_VERSION="20"
+INSTALL_DDEV="true"
+INSTALL_ORBSTACK="true"
+MACOS_DOCK_AUTOHIDE="true"
+# ... more options
 ```
+
+See `config.example` for all available options.
 
 ## Structure
 
 ```
 ~/dotfiles/
-├── homebrew/       # Brewfile & packages
-├── zsh/            # Shell config, aliases, functions
-├── git/            # Git config & global gitignore
-├── ssh/            # SSH config (keys not tracked)
-├── starship/       # Prompt config (two-line with icons)
-├── cursor/         # Cursor settings, keybindings & extensions
-├── ghostty/        # Ghostty terminal config (One Dark Pro theme)
-├── zed/            # Zed editor settings & keymap
-├── warp/           # Warp terminal themes
-├── macos/          # macOS system defaults
-├── ddev/           # DDEV global config
-├── mise/           # Node.js version manager
-├── raycast/        # Raycast settings (manual export)
-├── bin/            # Custom scripts
-├── install.sh      # Main installer
-└── backup.sh       # Backup script
+├── setup.sh            # First-time setup wizard
+├── install.sh          # Main installer
+├── backup.sh           # Backup current settings
+├── config.example      # Example configuration
+├── config.local        # Your personal config (git-ignored)
+│
+├── zsh/                # Shell config
+│   ├── .zshrc
+│   ├── aliases.zsh
+│   └── functions.zsh
+│
+├── git/                # Git config
+├── ssh/                # SSH config
+├── starship/           # Prompt config
+├── cursor/             # Cursor/VS Code settings
+├── ghostty/            # Ghostty terminal config
+├── zed/                # Zed editor config
+├── warp/               # Warp terminal theme
+├── homebrew/           # Brewfile
+├── macos/              # macOS system preferences
+├── mise/               # Runtime manager
+└── ddev/               # DDEV config
 ```
-
-## What Gets Installed
-
-### CLI Tools
-- mise (runtime manager)
-- starship (prompt)
-- zoxide (smart cd)
-- fzf (fuzzy finder)
-- zsh-autosuggestions
-- zsh-syntax-highlighting
-- git, gh, jq
-- mkcert, nss (SSL)
-
-### Applications
-- OrbStack (Docker)
-- Cursor (AI editor)
-- Ghostty (GPU terminal)
-- Zed (fast editor)
-- Warp (AI terminal)
-- Raycast (launcher)
-- JetBrains Mono Nerd Font
-
-### DDEV
-- DDEV for local PHP development
-
-## Theme
-
-All apps use **One Dark Pro Night Flat** color scheme:
-- Background: `#16191d`
-- Foreground: `#abb2bf`
-- Font: JetBrainsMono Nerd Font (14px)
 
 ## Customization
 
-Each folder contains its own `install.sh` that can be run independently:
+### Install specific components
 
 ```bash
-# Only update git config
+# Only setup git
 ~/dotfiles/git/install.sh
 
 # Only apply macOS settings
 ~/dotfiles/macos/install.sh
 
-# Only update Cursor settings
+# Only setup Cursor
 ~/dotfiles/cursor/install.sh
 ```
+
+### macOS Settings
+
+The setup wizard asks about common preferences:
+- Show hidden files in Finder
+- Auto-hide Dock
+- Fast key repeat (for vim users)
+- Tap to click on trackpad
+- Screenshots location
 
 ## Useful Aliases
 
@@ -97,29 +130,79 @@ Each folder contains its own `install.sh` that can be run independently:
 |-------|---------|
 | `gs` | `git status -sb` |
 | `gac "msg"` | `git add -A && git commit -m` |
+| `gl` | `git pull` |
+| `gp` | `git push` |
 | `dds` | `ddev start` |
 | `c.` | `cursor .` |
+| `..` | `cd ..` |
 | `backup` | Run backup script |
 
 ## Keybindings
 
 ### Cursor / Zed
-- `Cmd+J/K` - Navigate tabs / suggestions
-- `Cmd+L` - Toggle AI panel (Zed)
-- `Cmd+D` - Duplicate line
-- `Alt+Up/Down` - Move line
-- `Cmd+1/2/3` - Fold levels
+| Key | Action |
+|-----|--------|
+| `Cmd+J/K` | Navigate tabs / suggestions |
+| `Cmd+L` | Toggle AI panel (Zed) |
+| `Cmd+D` | Duplicate line |
+| `Alt+Up/Down` | Move line |
+| `Cmd+1/2/3` | Fold levels |
 
-### Terminal (Ghostty)
-- `Ctrl+Shift+T` - New tab
-- `Ctrl+Shift+N` - New window
-- `Ctrl++/-` - Font size
+### Ghostty
+| Key | Action |
+|-----|--------|
+| `Ctrl+Shift+T` | New tab |
+| `Ctrl+Shift+N` | New window |
+| `Ctrl++/-` | Font size |
 
-## Notes
+## Backup & Sync
 
-- SSH private keys are **not** tracked - only `~/.ssh/config`
-- Raycast settings must be exported manually via app
-- After install, restart terminal for changes to take effect
+```bash
+# Backup current settings to dotfiles
+~/dotfiles/backup.sh
+
+# This will:
+# - Export Cursor settings & extensions
+# - Export Ghostty, Zed, Starship configs
+# - Export Warp themes
+# - Export Brewfile
+# - Commit and push changes
+```
+
+## Font
+
+All configurations use **JetBrains Mono Nerd Font**. It's automatically installed via Homebrew.
+
+## Theme
+
+**One Dark Pro Night Flat** is configured across:
+- Cursor / VS Code
+- Ghostty terminal
+- Warp terminal
+- Zed editor
+
+## Uninstall
+
+To remove symlinks and restore defaults:
+
+```bash
+# Remove symlinks
+rm ~/.zshrc ~/.gitconfig ~/.gitignore_global
+rm ~/.config/starship.toml
+rm -rf ~/.config/ghostty ~/.config/zed
+```
+
+## Requirements
+
+- macOS (tested on Sonoma 14.x)
+- Apple Silicon or Intel Mac
+- Internet connection (for Homebrew)
+
+## Credits
+
+Inspired by:
+- [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [Zach Holman's dotfiles](https://github.com/holman/dotfiles)
 
 ## License
 

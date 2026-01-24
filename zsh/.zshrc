@@ -1,21 +1,16 @@
-# bun completions
-[ -s "/Users/liem.tran/.bun/_bun" ] && source "/Users/liem.tran/.bun/_bun"
+# ===== Homebrew =====
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/liem.tran/.lmstudio/bin"
-
-# Added by Antigravity
-export PATH="/Users/liem.tran/.antigravity/antigravity/bin:$PATH"
-
-# ===== PATH & Environment =====
-export PATH="$HOME/.local/bin:$PATH"
-export EDITOR="cursor --wait"
+# ===== Environment =====
+export EDITOR="${DEFAULT_EDITOR:-cursor} --wait"
 export LANG="en_US.UTF-8"
 export DOTFILES="$HOME/dotfiles"
+export PATH="$HOME/.local/bin:$PATH"
+
+# ===== Bun (if installed) =====
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ===== History =====
 HISTSIZE=10000

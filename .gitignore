@@ -1,4 +1,4 @@
-# Private
+# Private files
 *.local
 *.private
 .env
@@ -12,3 +12,6 @@ ssh/*.pub
 
 # Raycast (backup manually)
 raycast/*.rayconfig
+
+# User-specific config (created by setup.sh)
+config.local

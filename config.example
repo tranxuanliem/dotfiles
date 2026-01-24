@@ -1,0 +1,32 @@
+# Dotfiles Configuration
+# Copy this file to config.local and customize your settings
+# This file will be ignored by git
+
+# ===== User Info =====
+GIT_USER_NAME="Your Name"
+GIT_USER_EMAIL="your@email.com"
+
+# ===== Editor =====
+# Options: cursor, code, zed, vim, nvim
+DEFAULT_EDITOR="cursor"
+
+# ===== Node.js Version =====
+# Default Node.js version to install via mise
+NODE_VERSION="20"
+
+# ===== Optional Tools =====
+# Set to "true" to install, "false" to skip
+INSTALL_DDEV="true"
+INSTALL_ORBSTACK="true"
+
+# ===== macOS Settings =====
+# Set to "true" to apply these settings
+MACOS_SHOW_HIDDEN_FILES="true"
+MACOS_DOCK_AUTOHIDE="true"
+MACOS_FAST_KEY_REPEAT="true"
+MACOS_TAP_TO_CLICK="true"
+MACOS_SCREENSHOTS_LOCATION="$HOME/Pictures/Screenshots"
+
+# ===== SSH =====
+# Email for SSH key generation (defaults to GIT_USER_EMAIL)
+SSH_KEY_EMAIL=""

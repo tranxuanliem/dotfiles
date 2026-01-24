@@ -2,7 +2,16 @@
 
 echo "⚙️ Setting up Mise..."
 
-eval "$(mise activate bash)"
-mise use --global node@20
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-echo "✅ Mise configured"
+# Load config if available
+if [ -f "$DOTFILES_DIR/config.local" ]; then
+    source "$DOTFILES_DIR/config.local"
+fi
+
+NODE_VERSION="${NODE_VERSION:-20}"
+
+eval "$(mise activate bash)"
+mise use --global "node@$NODE_VERSION"
+
+echo "✅ Mise configured (Node.js $NODE_VERSION)"

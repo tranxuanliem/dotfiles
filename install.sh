@@ -48,6 +48,7 @@ installers=(
     "starship"
     "cursor"
     "ghostty"
+    "terminal"
     "zed"
     "warp"
     "opencode"

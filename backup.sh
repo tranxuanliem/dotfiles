@@ -33,6 +33,13 @@ echo "  → Warp themes..."
 mkdir -p "$DOTFILES_DIR/warp"
 cp ~/.warp/themes/*.yaml "$DOTFILES_DIR/warp/" 2>/dev/null
 
+# ===== OpenCode =====
+echo "  → OpenCode config..."
+mkdir -p "$DOTFILES_DIR/opencode/themes"
+cp ~/.config/opencode/opencode.json "$DOTFILES_DIR/opencode/" 2>/dev/null
+cp ~/.config/opencode/.ckignore "$DOTFILES_DIR/opencode/" 2>/dev/null
+cp ~/.config/opencode/themes/*.json "$DOTFILES_DIR/opencode/themes/" 2>/dev/null
+
 # ===== Brewfile =====
 echo "  → Homebrew packages..."
 brew bundle dump --file="$DOTFILES_DIR/homebrew/Brewfile" --force

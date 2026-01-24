@@ -50,6 +50,7 @@ installers=(
     "ghostty"
     "zed"
     "warp"
+    "opencode"
     "ddev"
     "macos"
 )

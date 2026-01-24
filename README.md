@@ -37,6 +37,7 @@ cd ~/dotfiles && chmod +x setup.sh install.sh && ./setup.sh
 |------|-------------|
 | **Cursor** | AI-powered VS Code fork |
 | **Zed** | Fast, collaborative editor |
+| **OpenCode** | AI coding assistant (CLI) |
 
 ### Development
 | Tool | Description |
@@ -94,6 +95,7 @@ See `config.example` for all available options.
 ├── ghostty/            # Ghostty terminal config
 ├── zed/                # Zed editor config
 ├── warp/               # Warp terminal theme
+├── opencode/           # OpenCode AI assistant config
 ├── homebrew/           # Brewfile
 ├── macos/              # macOS system preferences
 ├── mise/               # Runtime manager
@@ -180,6 +182,7 @@ All configurations use **JetBrains Mono Nerd Font**. It's automatically installe
 - Ghostty terminal
 - Warp terminal
 - Zed editor
+- OpenCode CLI
 
 ## Uninstall
 
@@ -189,7 +192,7 @@ To remove symlinks and restore defaults:
 # Remove symlinks
 rm ~/.zshrc ~/.gitconfig ~/.gitignore_global
 rm ~/.config/starship.toml
-rm -rf ~/.config/ghostty ~/.config/zed
+rm -rf ~/.config/ghostty ~/.config/zed ~/.config/opencode
 ```
 
 ## Requirements

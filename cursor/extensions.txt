@@ -1,0 +1,11 @@
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+bradlc.vscode-tailwindcss
+bmewburn.vscode-intelephense-client
+mblode.twig-language-2
+neilbrayfield.php-docblocker
+formulahendry.auto-rename-tag
+christian-kohler.path-intellisense
+streetsidesoftware.code-spell-checker
+eamodio.gitlens
+pkief.material-icon-theme

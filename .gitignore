@@ -1,0 +1,14 @@
+# Private
+*.local
+*.private
+.env
+
+# SSH keys (only backup config, not keys)
+ssh/id_*
+ssh/*.pub
+
+# macOS
+.DS_Store
+
+# Raycast (backup manually)
+raycast/*.rayconfig

@@ -1,0 +1,40 @@
+[user]
+    name = tranxuanliem
+    email = xuanliem.vt@gmail.com
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = cursor --wait
+    autocrlf = input
+    ignorecase = false
+    excludesfile = ~/.gitignore_global
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[diff]
+    algorithm = histogram
+
+[merge]
+    conflictstyle = diff3
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status -sb
+    lg = log --oneline --graph -15
+    undo = reset HEAD~1 --mixed
+    amend = commit --amend --no-edit
+    last = log -1 HEAD
+
+[color]
+    ui = auto

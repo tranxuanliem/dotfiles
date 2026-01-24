@@ -1,0 +1,7 @@
+# ~/.ddev/global_config.yaml
+omit_containers: []
+performance_mode: mutagen
+router_http_port: "80"
+router_https_port: "443"
+use_hardened_images: false
+use_letsencrypt: false

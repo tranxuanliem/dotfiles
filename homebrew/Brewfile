@@ -1,0 +1,26 @@
+# Taps
+tap "homebrew/bundle"
+tap "ddev/ddev"
+
+# CLI Tools
+brew "mise"
+brew "starship"
+brew "zoxide"
+brew "fzf"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "git"
+brew "gh"
+brew "mkcert"
+brew "nss"
+brew "jq"
+
+# DDEV
+brew "ddev"
+
+# Applications
+cask "orbstack"
+cask "cursor"
+cask "warp"
+cask "raycast"
+cask "font-jetbrains-mono-nerd-font"

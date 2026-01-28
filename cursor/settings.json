@@ -1,150 +1,149 @@
 {
-    // === TYPOGRAPHY (Clean, readable) ===
-    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
-    "editor.fontSize": 14,
-    "editor.fontWeight": "400",
-    "editor.fontLigatures": true,
-    "editor.lineHeight": 1.6,
-    "editor.letterSpacing": 0.3,
+  // === TYPOGRAPHY (Clean, readable) ===
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
+  "editor.fontSize": 14,
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.3,
 
-    // === EDITOR BEHAVIOR ===
-    "editor.tabSize": 4,
-    "editor.detectIndentation": false,
-    "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 120,
-    "editor.rulers": [100, 120],
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorWidth": 2,
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.smoothScrolling": true,
-    "editor.linkedEditing": true,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "editor.renderWhitespace": "trailing",
-    "editor.copyWithSyntaxHighlighting": false,
-    "editor.multiCursorModifier": "ctrlCmd",
+  // === EDITOR BEHAVIOR ===
+  "editor.tabSize": 4,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "editor.rulers": [100, 120],
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorWidth": 2,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.linkedEditing": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.renderWhitespace": "trailing",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.multiCursorModifier": "ctrlCmd",
 
-    // === MINIMAL UI (Remove visual clutter) ===
-    "editor.minimap.enabled": false,
-    "editor.scrollbar.verticalScrollbarSize": 10,
-    "editor.scrollbar.horizontalScrollbarSize": 10,
-    "editor.stickyScroll.enabled": true,
-    "editor.glyphMargin": true,
-    "editor.folding": true,
-    "editor.showFoldingControls": "mouseover",
-    "editor.renderLineHighlight": "gutter",
-    "editor.occurrencesHighlight": "singleFile",
-    "breadcrumbs.enabled": false,
-    "editor.lineNumbers": "relative",
-    "zenMode.hideLineNumbers": false,
+  // === MINIMAL UI (Remove visual clutter) ===
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.verticalScrollbarSize": 10,
+  "editor.scrollbar.horizontalScrollbarSize": 10,
+  "editor.stickyScroll.enabled": true,
+  "editor.glyphMargin": true,
+  "editor.folding": true,
+  "editor.showFoldingControls": "mouseover",
+  "editor.renderLineHighlight": "gutter",
+  "editor.occurrencesHighlight": "singleFile",
+  "breadcrumbs.enabled": false,
+  "editor.lineNumbers": "on",
+  "zenMode.hideLineNumbers": false,
 
-    // === SUGGESTIONS & HINTS ===
-    "editor.suggestFontSize": 14,
-    "editor.suggestLineHeight": 24,
-    "editor.quickSuggestions": { "strings": "on" },
-    "editor.quickSuggestionsDelay": 10,
-    "editor.suggest.preview": true,
-    "editor.inlineSuggest.enabled": true,
-    "editor.inlayHints.enabled": "offUnlessPressed",
-    "editor.parameterHints.enabled": false,
+  // === SUGGESTIONS & HINTS ===
+  "editor.suggestFontSize": 14,
+  "editor.suggestLineHeight": 24,
+  "editor.quickSuggestions": { "strings": "on" },
+  "editor.quickSuggestionsDelay": 10,
+  "editor.suggest.preview": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.parameterHints.enabled": false,
 
-    // === FORMATTING ===
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-    },
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.startupEditor": "none",
-    "workbench.editor.enablePreview": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.empty.hint": "hidden",
-    "workbench.tree.indent": 16,
-    "workbench.tree.enableStickyScroll": true,
-    "workbench.layoutControl.enabled": false,
-    "workbench.activityBar.location": "top",
+  // === FORMATTING ===
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.tree.indent": 16,
+  "workbench.tree.enableStickyScroll": true,
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "top",
 
-    // === WINDOW ===
-    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
-    "window.titleBarStyle": "native",
-    "window.commandCenter": false,
+  // === WINDOW ===
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+  "window.titleBarStyle": "native",
+  "window.commandCenter": false,
 
-    // === TERMINAL ===
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', monospace",
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.suggest.enabled": true,
-    "terminal.integrated.smoothScrolling": true,
+  // === TERMINAL ===
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.smoothScrolling": true,
 
-    // === FILES ===
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/.cache": true,
-        "**/node_modules": false,
-    },
-    "files.associations": {
-        "*.twig": "twig",
-        "*.scss": "scss",
-    },
+  // === FILES ===
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.cache": true,
+    "**/node_modules": false
+  },
+  "files.associations": {
+    "*.twig": "twig",
+    "*.scss": "scss"
+  },
 
-    // === EXPLORER ===
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.compactFolders": false,
+  // === EXPLORER ===
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
 
-    // === GIT ===
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.openRepositoryInParentFolders": "never",
+  // === GIT ===
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
 
-    // === LANGUAGE-SPECIFIC ===
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
+  // === LANGUAGE-SPECIFIC ===
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
-    // === EMMET ===
-    "emmet.triggerExpansionOnTab": true,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact",
-        "typescript": "typescriptreact",
-        "twig": "html",
-    },
+  // === EMMET ===
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "twig": "html"
+  },
 
-    // === PRETTIER ===
-    "prettier.singleQuote": true,
-    "prettier.tabWidth": 4,
-    "prettier.printWidth": 120,
+  // === PRETTIER ===
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 4,
+  "prettier.printWidth": 120,
 
-    // === VALIDATION ===
-    "css.validate": false,
-    "scss.validate": false,
+  // === VALIDATION ===
+  "css.validate": false,
+  "scss.validate": false,
 
-    // === CURSOR-SPECIFIC ===
-    "cursor.composer.textSizeScale": 1.15,
+  // === CURSOR-SPECIFIC ===
+  "cursor.composer.textSizeScale": 1.15,
 
-    // === SECURITY ===
-    "security.workspace.trust.untrustedFiles": "open",
-    "workbench.editor.tabActionCloseVisibility": false,
-    "claudeCode.preferredLocation": "panel",
-    "workbench.colorTheme": "One Dark Pro Night Flat",
-    "window.customTitleBarVisibility": "never",
-    "cursor.composer.shouldChimeAfterChatFinishes": true,
-    "git.enableSmartCommit": true,
+  // === SECURITY ===
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.editor.tabActionCloseVisibility": false,
+  "claudeCode.preferredLocation": "panel",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  "window.customTitleBarVisibility": "never",
+  "git.enableSmartCommit": true
 }

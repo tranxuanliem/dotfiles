@@ -18,8 +18,11 @@ if [ -z "$GIT_USER_EMAIL" ]; then
     read -p "   Git email: " GIT_USER_EMAIL
 fi
 
-# Determine editor
-EDITOR_CMD="${DEFAULT_EDITOR:-cursor} --wait"
+# Determine editor (--wait only for GUI editors)
+case "${DEFAULT_EDITOR:-cursor}" in
+    vim|nvim|nano) EDITOR_CMD="${DEFAULT_EDITOR}" ;;
+    *) EDITOR_CMD="${DEFAULT_EDITOR:-cursor} --wait" ;;
+esac
 
 # Create .gitconfig from template
 cat > ~/.gitconfig << EOF

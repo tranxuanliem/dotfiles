@@ -57,7 +57,6 @@
     "breakpoints": true,
     "folds": true,
   },
-  "relative_line_numbers": "enabled",
 
   // === INDENT GUIDES ===
   "indent_guides": {

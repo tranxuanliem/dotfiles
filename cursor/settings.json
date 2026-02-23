@@ -144,6 +144,5 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "claudeCode.preferredLocation": "panel",
   "workbench.colorTheme": "One Dark Pro Night Flat",
-  "window.customTitleBarVisibility": "never",
-  "git.enableSmartCommit": true
+  "window.customTitleBarVisibility": "never"
 }

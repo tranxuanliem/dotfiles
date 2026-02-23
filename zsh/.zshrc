@@ -1,5 +1,9 @@
 # ===== Homebrew =====
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # ===== Environment =====
 export EDITOR="${DEFAULT_EDITOR:-cursor} --wait"
@@ -21,14 +25,20 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # ===== Plugins =====
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+BREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+
+[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
+    source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Zoxide
-eval "$(zoxide init zsh)"
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 # Fzf
-source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-source $(brew --prefix)/opt/fzf/shell/completion.zsh
+[ -f "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ] && source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+[ -f "$BREW_PREFIX/opt/fzf/shell/completion.zsh" ] && source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
+
+# Mise
+command -v mise &>/dev/null && eval "$(mise activate zsh)"
 
 # ===== Load custom configs =====
 for file in $DOTFILES/zsh/*.zsh; do
@@ -36,7 +46,8 @@ for file in $DOTFILES/zsh/*.zsh; do
 done
 
 # ===== Starship =====
-eval "$(starship init zsh)"
+command -v starship &>/dev/null && eval "$(starship init zsh)"
 
 # ===== Syntax highlighting (always last) =====
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+    source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

@@ -16,7 +16,7 @@ if [ "$INSTALL_DDEV" = "false" ]; then
 fi
 
 # mkcert
-mkcert -install 2>/dev/null
+command -v mkcert &>/dev/null && mkcert -install 2>/dev/null
 
 # Global config
 mkdir -p ~/.ddev

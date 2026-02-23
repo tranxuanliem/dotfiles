@@ -21,9 +21,6 @@ fi
 TEMP_BREWFILE=$(mktemp)
 
 cat > "$TEMP_BREWFILE" << 'EOF'
-# Taps
-tap "homebrew/bundle"
-
 # CLI Tools (always install)
 brew "mise"
 brew "starship"
@@ -58,7 +55,7 @@ fi
 
 # Install from Brewfile
 echo "📦 Installing packages..."
-brew bundle install --file="$TEMP_BREWFILE"
+brew bundle install --file="$TEMP_BREWFILE" --no-lock || echo "⚠️  Some packages failed to install. Check output above."
 
 rm "$TEMP_BREWFILE"
 

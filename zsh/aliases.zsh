@@ -33,7 +33,7 @@ alias ddl="ddev launch"
 alias ddc="ddev craft"
 alias ddco="ddev composer"
 alias ddlogs="ddev logs -f"
-alias dddb="ddev import-db --src"
+alias dddb="ddev import-db --file"
 alias ddsnap="ddev snapshot"
 alias ddpow="ddev poweroff"
 

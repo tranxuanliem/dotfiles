@@ -13,12 +13,16 @@ mkdir -p "$CURSOR_USER_DIR"
 cp "$CURSOR_DIR/settings.json" "$CURSOR_USER_DIR/"
 [ -f "$CURSOR_DIR/keybindings.json" ] && cp "$CURSOR_DIR/keybindings.json" "$CURSOR_USER_DIR/"
 
-# Install extensions
+# Install extensions (requires Cursor CLI - install from Command Palette: "Install 'cursor' command in PATH")
 if [ -f "$CURSOR_DIR/extensions.txt" ]; then
-    echo "📦 Installing extensions..."
-    while read extension; do
-        cursor --install-extension "$extension" --force
-    done < "$CURSOR_DIR/extensions.txt"
+    if command -v cursor &> /dev/null; then
+        echo "📦 Installing extensions..."
+        while read extension; do
+            cursor --install-extension "$extension" --force
+        done < "$CURSOR_DIR/extensions.txt"
+    else
+        echo "⚠️  Cursor CLI not found. Open Cursor → Command Palette → 'Install cursor command in PATH', then re-run."
+    fi
 fi
 
 echo "✅ Cursor configured"

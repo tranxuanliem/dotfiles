@@ -12,13 +12,31 @@ Opinionated macOS dotfiles for web developers. Includes configurations for termi
 ## Quick Start
 
 ```bash
-# 1. Clone this repo
+curl -fsSL https://raw.githubusercontent.com/tranxuanliem/dotfiles/main/bootstrap.sh | bash
+```
+
+This single command will:
+- Install Xcode CLI tools (if needed)
+- Clone this repo to ~/dotfiles
+- Install everything with sensible defaults
+
+### Options
+
+```bash
+# Interactive setup (choose your preferences)
+curl -fsSL https://raw.githubusercontent.com/tranxuanliem/dotfiles/main/bootstrap.sh | bash -s -- --interactive
+
+# Custom install directory
+curl -fsSL https://raw.githubusercontent.com/tranxuanliem/dotfiles/main/bootstrap.sh | bash -s -- --dir ~/.dotfiles
+```
+
+### Manual Install
+
+If you prefer manual control over each step:
+
+```bash
 git clone https://github.com/tranxuanliem/dotfiles.git ~/dotfiles
-
-# 2. Run setup wizard (creates your personal config)
 cd ~/dotfiles && chmod +x setup.sh install.sh && ./setup.sh
-
-# 3. Install everything
 ./install.sh
 ```
 
@@ -78,6 +96,7 @@ See `config.example` for all available options.
 
 ```
 ~/dotfiles/
+├── bootstrap.sh        # One-click setup for fresh Mac (curl | bash)
 ├── setup.sh            # First-time setup wizard
 ├── install.sh          # Main installer
 ├── backup.sh           # Backup current settings

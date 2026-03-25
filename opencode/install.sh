@@ -3,6 +3,18 @@
 echo "⚙️ Setting up OpenCode..."
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Load config if available
+if [ -f "$DOTFILES_DIR/config.local" ]; then
+    source "$DOTFILES_DIR/config.local"
+fi
+
+# Skip if not enabled
+if [ "$INSTALL_OPENCODE" = "false" ]; then
+    echo "   Skipped (disabled in config)"
+    exit 0
+fi
+
 OPENCODE_DIR="$DOTFILES_DIR/opencode"
 CONFIG_DIR="$HOME/.config/opencode"
 

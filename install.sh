@@ -35,6 +35,7 @@ echo ""
 # Export for child scripts
 export GIT_USER_NAME GIT_USER_EMAIL DEFAULT_EDITOR NODE_VERSION
 export INSTALL_DDEV INSTALL_ORBSTACK
+export INSTALL_GHOSTTY INSTALL_ZED INSTALL_OPENCODE
 export MACOS_SHOW_HIDDEN_FILES MACOS_DOCK_AUTOHIDE MACOS_FAST_KEY_REPEAT
 export MACOS_TAP_TO_CLICK MACOS_SCREENSHOTS_LOCATION SSH_KEY_EMAIL
 
@@ -60,6 +61,16 @@ for installer in "${installers[@]}"; do
     if [ -f "$DOTFILES_DIR/$installer/install.sh" ]; then
         echo ""
         bash "$DOTFILES_DIR/$installer/install.sh"
+    fi
+
+    # After Homebrew installs, ensure brew is in PATH for all subsequent scripts
+    if [ "$installer" = "homebrew" ]; then
+        if [ -f /opt/homebrew/bin/brew ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [ -f /usr/local/bin/brew ]; then
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+        export PATH
     fi
 done
 

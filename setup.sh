@@ -54,6 +54,18 @@ echo ""
 # ===== Optional Tools =====
 echo "📝 Optional Tools"
 echo "─────────────────────"
+read -p "   Install Ghostty (terminal)? (Y/n): " install_ghostty
+install_ghostty=${install_ghostty:-Y}
+[[ "$install_ghostty" =~ ^[Yy]$ ]] && install_ghostty="true" || install_ghostty="false"
+
+read -p "   Install Zed (editor)? (y/N): " install_zed
+install_zed=${install_zed:-N}
+[[ "$install_zed" =~ ^[Yy]$ ]] && install_zed="true" || install_zed="false"
+
+read -p "   Install OpenCode (AI assistant)? (y/N): " install_opencode
+install_opencode=${install_opencode:-N}
+[[ "$install_opencode" =~ ^[Yy]$ ]] && install_opencode="true" || install_opencode="false"
+
 read -p "   Install DDEV (PHP development)? (Y/n): " install_ddev
 install_ddev=${install_ddev:-Y}
 [[ "$install_ddev" =~ ^[Yy]$ ]] && install_ddev="true" || install_ddev="false"
@@ -104,6 +116,9 @@ DEFAULT_EDITOR="$editor"
 NODE_VERSION="$node_version"
 
 # ===== Optional Tools =====
+INSTALL_GHOSTTY="$install_ghostty"
+INSTALL_ZED="$install_zed"
+INSTALL_OPENCODE="$install_opencode"
 INSTALL_DDEV="$install_ddev"
 INSTALL_ORBSTACK="$install_orbstack"
 

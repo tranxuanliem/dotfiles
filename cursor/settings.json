@@ -12,7 +12,7 @@
   "editor.detectIndentation": false,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 120,
-  "editor.rulers": [100, 120],
+  "editor.rulers": [120],
   "editor.cursorBlinking": "smooth",
   "editor.cursorWidth": 2,
   "editor.cursorSmoothCaretAnimation": "on",

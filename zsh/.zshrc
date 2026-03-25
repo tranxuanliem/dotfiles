@@ -8,7 +8,12 @@ fi
 # ===== Environment =====
 export EDITOR="${DEFAULT_EDITOR:-cursor} --wait"
 export LANG="en_US.UTF-8"
-export DOTFILES="$HOME/dotfiles"
+# Resolve DOTFILES from .zshrc symlink target, fallback to ~/dotfiles
+if [ -L "$HOME/.zshrc" ]; then
+    export DOTFILES="$(cd "$(dirname "$(readlink "$HOME/.zshrc")")/.." && pwd)"
+else
+    export DOTFILES="$HOME/dotfiles"
+fi
 export PATH="$HOME/.local/bin:$PATH"
 
 # ===== Bun (if installed) =====

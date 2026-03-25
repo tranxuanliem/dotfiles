@@ -9,18 +9,31 @@ if [ -f "$DOTFILES_DIR/config.local" ]; then
     source "$DOTFILES_DIR/config.local"
 fi
 
+# Detect architecture
+if [ "$(uname -m)" = "arm64" ]; then
+    BREW_PREFIX="/opt/homebrew"
+else
+    BREW_PREFIX="/usr/local"
+fi
+
 # Install Homebrew if needed
 if ! command -v brew &> /dev/null; then
     echo "📦 Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo "eval \"\$(${BREW_PREFIX}/bin/brew shellenv)\"" >> ~/.zprofile
+    eval "$("${BREW_PREFIX}/bin/brew" shellenv)"
 fi
 
 # Create dynamic Brewfile based on config
 TEMP_BREWFILE=$(mktemp)
 
-cat > "$TEMP_BREWFILE" << 'EOF'
+# Taps must come before formulae that depend on them
+if [ "$INSTALL_DDEV" = "true" ]; then
+    echo 'tap "ddev/ddev"' >> "$TEMP_BREWFILE"
+fi
+
+cat >> "$TEMP_BREWFILE" << 'EOF'
+
 # CLI Tools (always install)
 brew "mise"
 brew "starship"
@@ -36,15 +49,18 @@ brew "jq"
 
 # Applications (always install)
 cask "cursor"
-cask "ghostty"
 cask "warp"
 cask "raycast"
 cask "font-jetbrains-mono-nerd-font"
 EOF
 
+# Optional: Ghostty
+if [ "$INSTALL_GHOSTTY" != "false" ]; then
+    echo 'cask "ghostty"' >> "$TEMP_BREWFILE"
+fi
+
 # Optional: DDEV
 if [ "$INSTALL_DDEV" = "true" ]; then
-    echo 'tap "ddev/ddev"' >> "$TEMP_BREWFILE"
     echo 'brew "ddev"' >> "$TEMP_BREWFILE"
 fi
 
@@ -55,7 +71,7 @@ fi
 
 # Install from Brewfile
 echo "📦 Installing packages..."
-brew bundle install --file="$TEMP_BREWFILE" --no-lock || echo "⚠️  Some packages failed to install. Check output above."
+brew bundle install --file="$TEMP_BREWFILE" || echo "⚠️  Some packages failed to install. Check output above."
 
 rm "$TEMP_BREWFILE"
 

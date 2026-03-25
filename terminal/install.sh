@@ -20,6 +20,13 @@ if [[ ! -f "$THEME_FILE" ]]; then
     exit 0
 fi
 
+# Ensure Terminal plist exists (may not exist on fresh macOS if Terminal was never opened)
+if [[ ! -f "$TERMINAL_PREFS" ]]; then
+    echo "  Creating Terminal preferences..."
+    defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
+    defaults write com.apple.Terminal "Startup Window Settings" -string "Basic"
+fi
+
 # Close Terminal preferences cache
 defaults read com.apple.Terminal > /dev/null 2>&1
 
@@ -28,15 +35,18 @@ echo "Importing Terminal profile..."
 if /usr/libexec/PlistBuddy -c "Delete ':Window Settings:$PROFILE_NAME'" "$TERMINAL_PREFS" 2>/dev/null; then
     echo "  Removed existing profile"
 fi
+
+# Ensure Window Settings dict exists
+/usr/libexec/PlistBuddy -c "Add ':Window Settings' dict" "$TERMINAL_PREFS" 2>/dev/null
+
 /usr/libexec/PlistBuddy -c "Merge '$THEME_FILE' ':Window Settings:$PROFILE_NAME'" "$TERMINAL_PREFS" 2>/dev/null || \
 /usr/libexec/PlistBuddy -c "Add ':Window Settings:$PROFILE_NAME' dict" "$TERMINAL_PREFS" 2>/dev/null
 
 # Alternative: copy all keys from theme file
 if ! /usr/libexec/PlistBuddy -c "Print ':Window Settings:$PROFILE_NAME:name'" "$TERMINAL_PREFS" 2>/dev/null; then
-    # Merge didn't work, try plutil approach
     echo "  Using plutil merge..."
     plutil -replace "Window Settings.$PROFILE_NAME" -xml "$(cat "$THEME_FILE")" "$TERMINAL_PREFS" 2>/dev/null || \
-    open "$THEME_FILE"  # Fallback: let Terminal import it
+    open "$THEME_FILE"
     sleep 1
 fi
 

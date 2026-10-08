@@ -176,6 +176,10 @@ The setup wizard asks about common preferences:
 |-----|--------|
 | `Ctrl+Shift+T` | New tab |
 | `Ctrl+Shift+N` | New window |
+Zed mirrors the personal Cursor shortcuts, including `Cmd+D` to duplicate a
+line and `Cmd+1/2/3` to fold level 1, fold level 2, and unfold all. See the
+[Zed setup and shortcut guide](zed/README.md) for the full mapping and fresh-Mac setup.
+
 | `Ctrl++/-` | Font size |
 
 ## Backup & Sync

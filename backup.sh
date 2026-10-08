@@ -18,10 +18,18 @@ mkdir -p "$DOTFILES_DIR/ghostty"
 cp ~/.config/ghostty/config "$DOTFILES_DIR/ghostty/" 2>/dev/null
 
 # ===== Zed =====
-echo "  → Zed settings & keymap..."
-mkdir -p "$DOTFILES_DIR/zed"
-cp ~/.config/zed/settings.json "$DOTFILES_DIR/zed/" 2>/dev/null
-cp ~/.config/zed/keymap.json "$DOTFILES_DIR/zed/" 2>/dev/null
+echo "  → Zed settings, keymap & themes..."
+mkdir -p "$DOTFILES_DIR/zed/themes"
+zed_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
+for zed_config_source in "$zed_config_dir/settings.json" "$zed_config_dir/keymap.json" "$zed_config_dir/themes/"*.json; do
+    zed_config_file="${zed_config_source#"$zed_config_dir/"}"
+    zed_config_target="$DOTFILES_DIR/zed/$zed_config_file"
+    [ -f "$zed_config_source" ] || continue
+    if [ "$zed_config_source" -ef "$zed_config_target" ]; then
+        continue
+    fi
+    cp "$zed_config_source" "$zed_config_target"
+done
 
 # ===== Starship =====
 echo "  → Starship config..."

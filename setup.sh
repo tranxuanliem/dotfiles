@@ -58,8 +58,8 @@ read -p "   Install Ghostty (terminal)? (Y/n): " install_ghostty
 install_ghostty=${install_ghostty:-Y}
 [[ "$install_ghostty" =~ ^[Yy]$ ]] && install_ghostty="true" || install_ghostty="false"
 
-read -p "   Install Zed (editor)? (y/N): " install_zed
-install_zed=${install_zed:-N}
+read -p "   Install Zed (editor)? (Y/n): " install_zed
+install_zed=${install_zed:-Y}
 [[ "$install_zed" =~ ^[Yy]$ ]] && install_zed="true" || install_zed="false"
 
 read -p "   Install OpenCode (AI assistant)? (y/N): " install_opencode

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "⚙️ Setting up Homebrew..."
 
@@ -26,6 +27,7 @@ fi
 
 # Create dynamic Brewfile based on config
 TEMP_BREWFILE=$(mktemp)
+trap 'rm -f "$TEMP_BREWFILE"' EXIT
 
 # Taps must come before formulae that depend on them
 if [ "$INSTALL_DDEV" = "true" ]; then
@@ -59,6 +61,11 @@ if [ "$INSTALL_GHOSTTY" != "false" ]; then
     echo 'cask "ghostty"' >> "$TEMP_BREWFILE"
 fi
 
+# Optional: Zed, with configuration installed by zed/install.sh
+if [ "$INSTALL_ZED" = "true" ]; then
+    echo 'cask "zed"' >> "$TEMP_BREWFILE"
+fi
+
 # Optional: DDEV
 if [ "$INSTALL_DDEV" = "true" ]; then
     echo 'brew "ddev"' >> "$TEMP_BREWFILE"
@@ -71,8 +78,6 @@ fi
 
 # Install from Brewfile
 echo "📦 Installing packages..."
-brew bundle install --file="$TEMP_BREWFILE" || echo "⚠️  Some packages failed to install. Check output above."
-
-rm "$TEMP_BREWFILE"
+brew bundle install --file="$TEMP_BREWFILE"
 
 echo "✅ Homebrew configured"

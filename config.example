@@ -17,7 +17,7 @@ NODE_VERSION="20"
 # ===== Optional Tools =====
 # Set to "true" to install, "false" to skip
 INSTALL_GHOSTTY="true"
-INSTALL_ZED="false"
+INSTALL_ZED="true"
 INSTALL_OPENCODE="false"
 INSTALL_DDEV="true"
 INSTALL_ORBSTACK="true"

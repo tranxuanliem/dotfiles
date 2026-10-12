@@ -10,7 +10,7 @@
 
     // === TYPOGRAPHY ===
     "buffer_font_family": "JetBrainsMono Nerd Font Mono",
-    "buffer_font_size": 17,
+    "buffer_font_size": 15,
     "buffer_font_weight": 500,
     "buffer_line_height": {
         "custom": 1.6,
@@ -22,7 +22,7 @@
 
     // === UI FONT ===
     "ui_font_family": "JetBrainsMono Nerd Font Mono",
-    "ui_font_size": 17,
+    "ui_font_size": 15,
 
     // === EDITOR BEHAVIOR ===
     "tab_size": 4,

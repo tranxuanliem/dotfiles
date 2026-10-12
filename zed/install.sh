@@ -21,11 +21,14 @@ mkdir -p "$ZED_CONFIG_DIR/themes"
 
 source "$DOTFILES_DIR/lib/config.sh"
 
-link_config "$DOTFILES_DIR/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
-link_config "$DOTFILES_DIR/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
+# Register bundled themes before settings selects them. This also avoids a
+# temporary fallback when Zed is already running during installation.
 for theme_file in "$DOTFILES_DIR/zed/themes/"*.json; do
     [ -f "$theme_file" ] || continue
     link_config "$theme_file" "$ZED_CONFIG_DIR/themes/$(basename "$theme_file")"
 done
+
+link_config "$DOTFILES_DIR/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
+link_config "$DOTFILES_DIR/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
 
 echo "✅ Zed configured"

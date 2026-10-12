@@ -27,8 +27,8 @@ existing language extensions. Extensions require Internet access. Sign in to
 Zed or configure your AI provider separately; credentials and account state are
 not stored here. Existing model and edit-prediction preferences are retained.
 
-The installer links settings, keymap and bundled themes. Existing files are
-backed up before replacement. Repeated installation preserves those backups;
+The installer links bundled themes first, then settings and keymap. Existing
+files are backed up before replacement. Repeated installation preserves those backups;
 unrelated themes remain untouched. It respects `XDG_CONFIG_HOME`, falling back
 to `~/.config/zed`. The root backup script copies local configuration and themes,
 skipping files already linked to dotfiles.
@@ -46,10 +46,18 @@ options match Cursor (single quotes, tab width 4, print width 120); project
 Prettier installations/configuration take precedence.
 
 One Dark Pro Night Flat uses Cursor's UI palette. Editor font is JetBrainsMono
-Nerd Font Mono, 14px, weight 500, line height 1.6; UI font is the macOS system
-font. Theme source: installed Cursor `zhuangtongfa.material-theme` 3.20.3.
+Nerd Font Mono, 15px, weight 500, line height 1.6; UI uses the same font at
+15px. Theme source: installed Cursor `zhuangtongfa.material-theme` 3.20.3.
 Tree-sitter captures differ from TextMate scopes, so syntax is matched by token
 family, not every language-specific rule.
+
+If Zed looks lighter or reports `theme not found: One Dark Pro Night Flat`,
+check that `~/.config/zed/themes/one-dark-pro-night-flat.json` exists (or the
+corresponding path under `XDG_CONFIG_HOME`). Set `INSTALL_ZED=true` in
+`config.local` and re-run `bash ~/dotfiles/zed/install.sh`. Then open the command
+palette → `theme selector: toggle`; One Dark Pro Night Flat should have the
+selection checkmark. Merely naming a missing theme in settings makes Zed fall
+back to another palette.
 
 ## Shortcuts
 

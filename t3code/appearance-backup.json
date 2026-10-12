@@ -10,11 +10,11 @@
   "lightTheme": "T3 Code",
   "interfaceFont": {
     "family": "JetBrainsMono Nerd Font Mono",
-    "sizePx": 17
+    "sizePx": 16
   },
   "monospaceFont": {
     "family": "JetBrainsMono Nerd Font Mono",
-    "sizePx": 17
+    "sizePx": 15
   },
   "contrastPercent": 100,
   "glassOpacityPercent": 80,

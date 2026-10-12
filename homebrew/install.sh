@@ -48,6 +48,7 @@ brew "gh"
 brew "mkcert"
 brew "nss"
 brew "jq"
+brew "direnv"
 
 # Applications (always install)
 cask "cursor"
@@ -59,6 +60,11 @@ EOF
 # Optional: Ghostty
 if [ "$INSTALL_GHOSTTY" != "false" ]; then
     echo 'cask "ghostty"' >> "$TEMP_BREWFILE"
+fi
+
+# Optional: T3 Code
+if [ "${INSTALL_T3CODE:-true}" = "true" ]; then
+    echo 'cask "t3-code"' >> "$TEMP_BREWFILE"
 fi
 
 # Optional: Zed, with configuration installed by zed/install.sh

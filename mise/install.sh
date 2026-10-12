@@ -9,7 +9,7 @@ if [ -f "$DOTFILES_DIR/config.local" ]; then
     source "$DOTFILES_DIR/config.local"
 fi
 
-NODE_VERSION="${NODE_VERSION:-20}"
+NODE_VERSION="${NODE_VERSION:-24}"
 
 # Ensure brew binaries are in PATH (mise installed via Homebrew)
 if [ -f /opt/homebrew/bin/brew ]; then

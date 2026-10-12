@@ -6,14 +6,16 @@ elif [ -f /usr/local/bin/brew ]; then
 fi
 
 # ===== Environment =====
-export EDITOR="${DEFAULT_EDITOR:-cursor} --wait"
-export LANG="en_US.UTF-8"
-# Resolve DOTFILES from .zshrc symlink target, fallback to ~/dotfiles
-if [ -L "$HOME/.zshrc" ]; then
-    export DOTFILES="$(cd "$(dirname "$(readlink "$HOME/.zshrc")")/.." && pwd)"
-else
-    export DOTFILES="$HOME/dotfiles"
+export DOTFILES="${${(%):-%N}:A:h:h}"
+# Keep private setup values out of shared configuration.
+if [ -f "$DOTFILES/config.local" ]; then
+    DEFAULT_EDITOR="$(bash -c 'source "$1"; printf "%s" "${DEFAULT_EDITOR:-cursor}"' bash "$DOTFILES/config.local")"
 fi
+case "${DEFAULT_EDITOR:-cursor}" in
+    vim|nvim|nano) export EDITOR="${DEFAULT_EDITOR}" ;;
+    *) export EDITOR="${DEFAULT_EDITOR:-cursor} --wait" ;;
+esac
+export LANG="en_US.UTF-8"
 export PATH="$HOME/.local/bin:$PATH"
 
 # ===== Bun (if installed) =====
@@ -49,6 +51,10 @@ command -v mise &>/dev/null && eval "$(mise activate zsh)"
 for file in $DOTFILES/zsh/*.zsh; do
     [ -r "$file" ] && source "$file"
 done
+
+# Optional tools and machine-specific overrides (never committed).
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+[ -r "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
 # ===== Starship =====
 command -v starship &>/dev/null && eval "$(starship init zsh)"

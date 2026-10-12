@@ -1,14 +1,10 @@
-[user]
-    name = tranxuanliem
-    email = xuanliem.vt@gmail.com
-
+# Shared reference settings. Identity is configured privately by git/install.sh.
 [init]
     defaultBranch = main
 
 [core]
     editor = cursor --wait
     autocrlf = input
-    ignorecase = false
     excludesfile = ~/.gitignore_global
 
 [pull]

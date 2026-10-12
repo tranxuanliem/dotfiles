@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "⚙️ Setting up SSH..."
 
@@ -12,9 +13,13 @@ fi
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 
-# Copy config template
-[ -f "$DOTFILES_DIR/ssh/config" ] && cp "$DOTFILES_DIR/ssh/config" ~/.ssh/config
-chmod 600 ~/.ssh/config 2>/dev/null
+# Retain this machine's host entries, identity files and connection settings.
+if [ ! -e "$HOME/.ssh/config" ] && [ ! -L "$HOME/.ssh/config" ]; then
+    cp "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+    chmod 600 "$HOME/.ssh/config"
+else
+    echo "   Existing SSH config retained; merge ssh/config manually if needed."
+fi
 
 # Generate key if needed
 if [ ! -f ~/.ssh/id_ed25519 ]; then

@@ -47,8 +47,8 @@ alias yb="yarn build"
 alias yw="yarn watch"
 
 # ===== Editor =====
-alias code="cursor"
-alias c.="cursor ."
+# alias code="cursor"
+# alias c.="cursor ."
 
 # ===== Misc =====
 alias ip="curl -s ipinfo.io | jq"
@@ -57,4 +57,4 @@ alias ports="lsof -i -P -n | grep LISTEN"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # ===== Dotfiles =====
-alias backup="~/dotfiles/backup.sh"
+alias backup='bash "$DOTFILES/backup.sh"'

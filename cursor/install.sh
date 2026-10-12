@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "⚙️ Setting up Cursor..."
 
@@ -9,9 +10,12 @@ CURSOR_USER_DIR=~/Library/Application\ Support/Cursor/User
 # Create directory
 mkdir -p "$CURSOR_USER_DIR"
 
-# Copy settings
-cp "$CURSOR_DIR/settings.json" "$CURSOR_USER_DIR/"
-[ -f "$CURSOR_DIR/keybindings.json" ] && cp "$CURSOR_DIR/keybindings.json" "$CURSOR_USER_DIR/"
+# Preserve existing settings before applying the shared profile.
+source "$DOTFILES_DIR/lib/config.sh"
+copy_config "$CURSOR_DIR/settings.json" "$CURSOR_USER_DIR/settings.json"
+if [ -f "$CURSOR_DIR/keybindings.json" ]; then
+    copy_config "$CURSOR_DIR/keybindings.json" "$CURSOR_USER_DIR/keybindings.json"
+fi
 
 # Install extensions
 if [ -f "$CURSOR_DIR/extensions.txt" ]; then

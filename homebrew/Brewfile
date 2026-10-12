@@ -10,11 +10,13 @@ brew "gh"
 brew "mkcert"
 brew "nss"
 brew "jq"
+brew "direnv"
 
 # Applications
 cask "cursor"
 cask "zed"
 cask "ghostty"
+cask "t3-code"
 cask "warp"
 cask "raycast"
 cask "font-jetbrains-mono-nerd-font"

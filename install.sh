@@ -26,6 +26,12 @@ fi
 # Load config
 source "$CONFIG_FILE"
 
+if [ -z "${GIT_USER_NAME:-}" ] || [ -z "${GIT_USER_EMAIL:-}" ] ||
+   [ "$GIT_USER_NAME" = "Your Name" ] || [ "$GIT_USER_EMAIL" = "your@email.com" ]; then
+    echo "❌ Set your Git identity in config.local or run ./setup.sh before installing."
+    exit 1
+fi
+
 echo "Installing with configuration:"
 echo "  → User: $GIT_USER_NAME <$GIT_USER_EMAIL>"
 echo "  → Editor: $DEFAULT_EDITOR"
@@ -35,7 +41,7 @@ echo ""
 # Export for child scripts
 export GIT_USER_NAME GIT_USER_EMAIL DEFAULT_EDITOR NODE_VERSION
 export INSTALL_DDEV INSTALL_ORBSTACK
-export INSTALL_GHOSTTY INSTALL_ZED INSTALL_OPENCODE
+export INSTALL_GHOSTTY INSTALL_T3CODE INSTALL_ZED INSTALL_OPENCODE
 export MACOS_SHOW_HIDDEN_FILES MACOS_DOCK_AUTOHIDE MACOS_FAST_KEY_REPEAT
 export MACOS_TAP_TO_CLICK MACOS_SCREENSHOTS_LOCATION SSH_KEY_EMAIL
 
@@ -49,6 +55,7 @@ installers=(
     "starship"
     "cursor"
     "ghostty"
+    "t3code"
     "terminal"
     "zed"
     "warp"

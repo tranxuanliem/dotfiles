@@ -1,35 +1,51 @@
 # T3 Code appearance
 
-`one-dark-pro-night-flat.json` maps the dotfiles
-[Zed palette](../zed/themes/one-dark-pro-night-flat.json) to T3 Code's supported
-color roles. It matches the canvas (`#16191d`), text (`#abb2bf`), panels,
-borders, blue accent, and terminal background/foreground/cursor. Muted labels
-use `#7f8796` to stay legible in the settings and chat interface.
+The One Dark Pro Night Flat palette matches Ghostty, Cursor and Zed in this
+repository. The native JSON contains only appearance colors. Accounts,
+conversations, projects, credentials and machine-specific application storage
+are never copied into dotfiles.
 
-Verified by importing in T3 Code (Alpha) 0.0.45.
+## Install on another Mac
 
-`appearance-backup.json` records the appearance settings verified in the app
-on 2026-10-12. It is a portable settings checklist, not a native application
-database backup or an importable theme. Together with the theme JSON it
-preserves the configured look without accounts, conversations, projects,
-credentials, or machine-specific application storage.
+Run the setup wizard and leave `INSTALL_T3CODE=true` and `INSTALL_GHOSTTY=true`.
+The full installer installs both stable Homebrew casks and the Nerd Font, then
+applies their configuration. To set up only these apps:
 
-## Apply
+```bash
+brew install --cask t3-code ghostty font-jetbrains-mono-nerd-font
+bash ~/dotfiles/ghostty/install.sh
+bash ~/dotfiles/t3code/install.sh
+```
 
-1. Open Settings → Appearance → Add theme.
-2. Choose `one-dark-pro-night-flat.json`, or paste its contents into Theme JSON.
-3. Click Add theme, then select dark mode.
-4. Set Interface font and Monospace font to `JetBrainsMono Nerd Font Mono`.
-5. Set interface and code font sizes to 17 px, matching the Zed profile.
-6. Restore the remaining Appearance controls from `appearance-backup.json`
-   (contrast, glass opacity, diff colors, chat width, motion, and word wrap).
+If `config.local` disables either app, enable it first. T3 Code's installer
+installs its official CLI if missing, matching the installed desktop version
+on Apple Silicon. On Intel, use Settings → General → t3 command → Install.
+Keep an existing CLI updated to the same release as the desktop app.
 
-The import stores a copy in T3 Code. Re-import after changing this file;
-this is not a live symlink or automatic synchronization.
+The installer publishes the palette in `~/.t3/userdata/themes/` and uses
+`t3 theme set one-dark-pro-night-flat`. Connected local clients switch to it;
+offline clients apply it when they reconnect. Re-run the installer after
+editing the theme. Existing palette files are backed up before replacement,
+and updates use an atomic rename. `T3CODE_HOME` selects an alternate data root.
+The installer does not start another server or enable remote access.
 
-T3 Code 0.0.45's theme format exposes 58 color roles. It does not expose
-individual syntax token colors or the full ANSI terminal palette, so those
-remain controlled by T3 Code. Font settings are separate from theme JSON.
+## Device appearance preferences
 
-Format reference:
-[T3 Code 0.0.45 theme parser](https://github.com/pingdotgg/t3code/blob/v0.0.45/apps/web/src/themePalette.ts).
+`appearance-backup.json` is a portable settings checklist, not a database
+backup or an importable theme. In Settings → Appearance use:
+
+- Dark mode and One Dark Pro Night Flat.
+- Interface and monospace font: `JetBrainsMono Nerd Font Mono`.
+- Interface size: 16 px; code size: 15 px.
+- Contrast: 100%; glass opacity: 80%; diff colors: Red & green.
+- Chat width: Comfortable; panel animations: 0 ms; word wrap: enabled.
+
+Fonts and layout are device preferences separate from environment theme
+colors. Restore them on each computer; server themes only synchronize palettes.
+If a client has a custom theme with the same ID, its custom copy wins. Remove
+that stale copy or re-import the repository theme in the app.
+
+Verified with T3 Code 0.0.45. Its theme format exposes 58 color roles; syntax
+token colors and the full terminal ANSI palette remain controlled by T3 Code.
+
+[Appearance documentation](https://github.com/pingdotgg/t3code/blob/v0.0.45/docs/user/appearance.md)

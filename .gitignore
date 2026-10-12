@@ -15,3 +15,7 @@ raycast/*.rayconfig
 
 # User-specific config (created by setup.sh)
 config.local
+
+# Local overrides and installer recovery copies
+*.backup.*
+.zshrc.local

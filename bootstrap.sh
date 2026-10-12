@@ -41,7 +41,8 @@ WHAT IT DOES:
   1. Installs Xcode CLI tools (if needed)
   2. Clones dotfiles repo to ~/dotfiles
   3. Creates config.local with sensible defaults
-  4. Runs the full installer
+  4. With --interactive, configures your identity and runs the installer
+     Otherwise, creates config.local for review before installation
 
 MORE INFO:
   See README.md in the cloned repo for details.
@@ -79,7 +80,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --dir)
-            if [ -z "$2" ]; then
+            if [ -z "${2:-}" ]; then
                 echo "❌ Error: --dir requires a path argument"
                 exit 1
             fi
@@ -141,8 +142,13 @@ echo "📂 Setting up repository..."
 if [ -d "$DOTFILES_DIR/.git" ]; then
     echo "   Dotfiles already cloned at $DOTFILES_DIR"
     echo "   Pulling latest changes..."
+    if [ -n "$(git -C "$DOTFILES_DIR" status --porcelain)" ]; then
+        echo "❌ Dotfiles has local changes or conflicts. Commit or resolve them before updating."
+        exit 1
+    fi
     git -C "$DOTFILES_DIR" pull --ff-only || {
-        echo "   ⚠️  Could not pull latest changes (offline or local modifications)"
+        echo "❌ Update failed. Resolve the Git or network error before installing."
+        exit 1
     }
     echo "   ✅ Repository ready"
 else
@@ -179,16 +185,19 @@ echo "⚙️  Setting up configuration..."
 if [ ! -f "$CONFIG_FILE" ]; then
     if [ "$INTERACTIVE" = true ]; then
         echo "   Running interactive setup wizard..."
-        bash "$DOTFILES_DIR/setup.sh"
+        bash "$DOTFILES_DIR/setup.sh" < /dev/tty
     else
         echo "   Creating default configuration..."
         if [ ! -f "$DOTFILES_DIR/config.example" ]; then
             echo "❌ Error: config.example not found in $DOTFILES_DIR"
             exit 1
         fi
-        cp -p "$DOTFILES_DIR/config.example" "$CONFIG_FILE"
+        cp "$DOTFILES_DIR/config.example" "$CONFIG_FILE"
+        chmod 600 "$CONFIG_FILE"
         echo "   ✅ Default config created at $CONFIG_FILE"
-        echo "   📝 Edit $CONFIG_FILE to customize settings"
+        echo "   📝 Edit $CONFIG_FILE to set your Git identity and preferences."
+        echo "   Then run: bash \"$DOTFILES_DIR/install.sh\""
+        exit 0
     fi
 else
     echo "   ✅ Configuration already exists at $CONFIG_FILE"

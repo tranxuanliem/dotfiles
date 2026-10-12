@@ -19,19 +19,7 @@ fi
 ZED_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
 mkdir -p "$ZED_CONFIG_DIR/themes"
 
-link_config() {
-    local source_file="$1" target_file="$2"
-    if [ -L "$target_file" ] && [ "$(readlink "$target_file")" = "$source_file" ]; then
-        return
-    fi
-    if [ -e "$target_file" ] || [ -L "$target_file" ]; then
-        local backup_file
-        backup_file=$(mktemp "${target_file}.backup.XXXXXX")
-        cp -pP "$target_file" "$backup_file"
-        echo "   Backup: $backup_file"
-    fi
-    ln -sfn "$source_file" "$target_file"
-}
+source "$DOTFILES_DIR/lib/config.sh"
 
 link_config "$DOTFILES_DIR/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
 link_config "$DOTFILES_DIR/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"

@@ -12,11 +12,12 @@ DEFAULT_EDITOR="cursor"
 
 # ===== Node.js Version =====
 # Default Node.js version to install via mise
-NODE_VERSION="20"
+NODE_VERSION="24"
 
 # ===== Optional Tools =====
 # Set to "true" to install, "false" to skip
 INSTALL_GHOSTTY="true"
+INSTALL_T3CODE="true"
 INSTALL_ZED="true"
 INSTALL_OPENCODE="false"
 INSTALL_DDEV="true"

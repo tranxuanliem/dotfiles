@@ -1,0 +1,25 @@
+{
+  "backupVersion": 1,
+  "application": "T3 Code (Alpha)",
+  "applicationVersion": "0.0.45",
+  "verifiedOn": "2026-10-12",
+  "scope": "appearance",
+  "themeFile": "one-dark-pro-night-flat.json",
+  "appearanceMode": "dark",
+  "darkTheme": "One Dark Pro Night Flat",
+  "lightTheme": "T3 Code",
+  "interfaceFont": {
+    "family": "JetBrainsMono Nerd Font Mono",
+    "sizePx": 17
+  },
+  "monospaceFont": {
+    "family": "JetBrainsMono Nerd Font Mono",
+    "sizePx": 17
+  },
+  "contrastPercent": 100,
+  "glassOpacityPercent": 80,
+  "diffColors": "Red & green",
+  "chatWidth": "Comfortable",
+  "panelAnimationDurationMs": 0,
+  "wordWrap": true
+}
